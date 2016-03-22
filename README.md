@@ -1,7 +1,7 @@
 M4STER_roBot
 ============
 
-A Telegram Bot based on plugins using [tg](https://github.com/vysheng/tg).
+A Telegram Bot based on plugins based on [DBTeam](https://github.com/Josepdal/DBTeam) using [tg](https://github.com/vysheng/tg).
 
 Bot Commands
 ------------
