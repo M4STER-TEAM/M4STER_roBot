@@ -50,43 +50,43 @@ end
 function msg_valid(msg)
   -- Don't process outgoing messages
   if msg.out then
-    print('\27[36mNot valid: msg from us\27[39m')
+    print('\27[36mMensaje no válido: Lo envié yo\27[39m')
     return true
   end
 
   -- Before bot was started
   if msg.date < now then
-    print('\27[36mNot valid: old msg\27[39m')
+    print('\27[36mMensaje no válido: Es viejo\27[39m')
     return false
   end
 
   if msg.unread == 0 then
-    print('\27[36mNot valid: readed\27[39m')
+    print('\27[36mMensaje no válido: Ya está leido\27[39m')
     return false
   end
 
   if not msg.to.id then
-    print('\27[36mNot valid: To id not provided\27[39m')
+    print('\27[36mMensaje no válido: No hay ID al que enviar\27[39m')
     return false
   end
 
   if not msg.from.id then
-    print('\27[36mNot valid: From id not provided\27[39m')
+    print('\27[36mMensaje no válido: No hay ID del remitente\27[39m')
     return false
   end
 
   if msg.from.id == our_id then
-    print('\27[36mNot valid: Msg from our id\27[39m')
+    print('\27[36mMensaje no válido: Mensaje de mi ID\27[39m')
     return true
   end
 
   if msg.to.type == 'encr_chat' then
-    print('\27[36mNot valid: Encrypted chat\27[39m')
+    print('\27[36mMensaje no válido: Chat encriptado\27[39m')
     return false
   end
 
   if msg.from.id == 777000 then
-    print('\27[36mNot valid: Telegram message\27[39m')
+    print('\27[36mMensaje no válido: Mensaje de Telegram\27[39m')
     return false
   end
 
@@ -184,12 +184,12 @@ end
 -- Save the content of _config to config.lua
 function save_config( )
   serialize_to_file(_config, './data/config.lua')
-  print ('saved config into ./data/config.lua')
+  print ('configuración guardada en ./data/config.lua')
 end
 
 function save_gbans( )
   serialize_to_file(_gbans, './data/gbans.lua')
-  print ('saved gban into ./data/gbans.lua')
+  print ('gban guardado en ./data/gbans.lua')
 end
 
 -- Returns the config from config.lua file.
@@ -198,14 +198,14 @@ function load_config( )
   local f = io.open('./data/config.lua', "r")
   -- If config.lua doesn't exist
   if not f then
-    print ("Created new config file: data/config.lua")
+    print ("Creado nuevo archivo: data/config.lua")
     create_config()
   else
     f:close()
   end
   local config = loadfile ("./data/config.lua")()
   for v,user in pairs(config.sudo_users) do
-    print('\27[93mAllowed user:\27[39m ' .. user)
+    print('\27[93mUsuario autorizado:\27[39m ' .. user)
   end
   return config
 end
@@ -214,7 +214,7 @@ function load_gbans( )
   local f = io.open('./data/gbans.lua', "r")
   -- If gbans.lua doesn't exist
   if not f then
-    print ("Created new gbans file: data/gbans.lua")
+    print ("Creado nuevo archivo de gbans: data/gbans.lua")
     create_gbans()
   else
     f:close()
@@ -250,7 +250,7 @@ function create_config( )
     disabled_channels = {}
   }
   serialize_to_file(config, './data/config.lua')
-  print ('saved config into ./data/config.lua')
+  print ('configuración guardada en ./data/config.lua')
 end
 
 function create_gbans( )
@@ -259,7 +259,7 @@ function create_gbans( )
     gbans_users = {}
   }
   serialize_to_file(gbans, './data/gbans.lua')
-  print ('saved gbans into ./data/gbans.lua')
+  print ('gbans guardados en ./data/gbans.lua')
 end
 
 function on_our_id (id)
@@ -284,7 +284,7 @@ end
 -- Enable plugins in config.json
 function load_plugins()
   for k, v in pairs(_config.enabled_plugins) do
-    print('\27[92mLoading plugin '.. v..'\27[39m')
+    print('\27[92mCargando plugin '.. v..'\27[39m')
 
     local ok, err =  pcall(function()
       local t = loadfile("plugins/"..v..'.lua')()
@@ -292,7 +292,7 @@ function load_plugins()
     end)
 
     if not ok then
-      print('\27[31mError loading plugin '..v..'\27[39m')
+      print('\27[31mError cargando el plugin '..v..'\27[39m')
       print('\27[31m'..err..'\27[39m')
     end
 
