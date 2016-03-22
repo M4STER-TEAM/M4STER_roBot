@@ -1,4 +1,4 @@
-DBTeam-bot
+M4STER_roBot
 ============
 
 A Telegram Bot based on plugins using [tg](https://github.com/vysheng/tg).
@@ -267,6 +267,17 @@ $ sudo cp etc/telegram.conf /etc/init/
 $ sudo start telegram # To start it
 $ sudo stop telegram # To stop it
 ```
+
+* * *
+
+
+#Original Bot
+###DBteam
+
+[![https://github.com/Josepdal/DBTeam](https://img.shields.io/badge/DBTeam-Bot-blue.svg)](https://github.com/Josepdal/DBTeam)
+
+-------------------------------------
+
 
 DBTeam support and development groups
 -------------------------------------
