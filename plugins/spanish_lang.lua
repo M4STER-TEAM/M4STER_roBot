@@ -357,7 +357,25 @@ local function run(msg, matches)
 		-- 9gag --
 		set_text(LANG, '9gag:0', 1)
 		set_text(LANG, '9gag:1', '#9gag: Envía una imágen aleatoria de 9gag.')
+        
+        -- sendmedia --
+        set_text(LANG, 'sendmedia:0', 11)
+        set_text(LANG, 'sendmedia:1', "#list files : Envía un archivo con los nombres de todo lo que se puede enviar",
+        set_text(LANG, 'sendmedia:2', "#extensions : Envía un mensaje con las extensiones para cada tipo de archivo permitidas",
+        set_text(LANG, 'sendmedia:3', "#send sticker <nombre del sticker> : Envía ese sticker del servidor",
+        set_text(LANG, 'sendmedia:4', "#send photo <nombre de la foto> <extension de la foto> : Envía esa foto del servidor",
+        set_text(LANG, 'sendmedia:5', "#send GIF <nombre del GIF> : Envía ese GIF del servidor",
+        set_text(LANG, 'sendmedia:6', "#send music <nombre de la canción <extension de la canción> : Envía esa canción del servidor",
+        set_text(LANG, 'sendmedia:7', "#send video <nombre del video> <extension del video> : Envía ese video del servidor",
+        set_text(LANG, 'sendmedia:8', "#send file <nombre del archivo> <extension del archivo> : Envía ese archivo del servidor",
+        set_text(LANG, 'sendmedia:9', "#send plugin <Nombre del plugin> : Envía ese archivo del servidor",
+        set_text(LANG, 'sendmedia:10', "#send manual <Ruta de archivo> <ombre del archivo con extensi> : Envía un archivo desde el directorio del bot",
+        set_text(LANG, 'sendmedia:11', "#send dev : Envía una foto del desarrollador"
 		
+                                                    
+        ---------------------------------------------------------------------------------------------------------------------------------------
+                                                    
+                                                    
 		if matches[1] == 'install' then
 			return 'ℹ️ El lenguaje español ha sido instalado en su base de datos.'
 		elseif matches[1] == 'update' then

@@ -7,51 +7,47 @@ local function run(msg, matches)
     local file = matches[3]
     
     if matches[2] == 'sticker' and not matches[4] then
-      send_document(receiver, "./media/"..file..".webp", ok_cb, false)
+      send_document(receiver, "./media/sticker/"..file..".webp", ok_cb, false)
     end
     
     if matches[2] == 'photo' then
-      send_photo(receiver, "./media/"..file..".jpeg", ok_cb, false)
-      send_photo(receiver, "./media/"..file..".jpg", ok_cb, false)  
-      send_photo(receiver, "./media/"..file..".png", ok_cb, false)
+      send_photo(receiver, "./media/photo/"..file..".jpeg", ok_cb, false)
+      send_photo(receiver, "./media/photo/"..file..".jpg", ok_cb, false)  
+      send_photo(receiver, "./media/photo/"..file..".png", ok_cb, false)
     end
     
     if matches[2] == 'gif' and not matches[4] then
-	  send_file(receiver, "./media/gifs/"..file..".mp4", ok_cb, false)
+	  send_file(receiver, "./media/gif/"..file..".mp4", ok_cb, false)
 	  --send_photo(receiver, "./media/"..file..".gif", ok_cb, false)
     end
     
     if matches[2] == 'music' then
-      send_audio(receiver, "./media/"..file..".mp3", ok_cb, false)
-      send_audio(receiver, "./media/"..file..".flac", ok_cb, false)  
-      send_audio(receiver, "./media/"..file..".aac", ok_cb, false)
+      send_audio(receiver, "./media/music/"..file..".mp3", ok_cb, false)
+      send_audio(receiver, "./media/music/"..file..".flac", ok_cb, false)  
+      send_audio(receiver, "./media/music/"..file..".aac", ok_cb, false)
     end
     
     if matches[2] == 'video' then
-      send_video(receiver, "./media/"..file..".avi", ok_cb, false)
-      send_video(receiver, "./media/"..file..".mpeg", ok_cb, false)  
-      send_video(receiver, "./media/"..file..".mp4", ok_cb, false)
+      send_video(receiver, "./media/video/"..file..".avi", ok_cb, false)
+      send_video(receiver, "./media/video/"..file..".mpeg", ok_cb, false)  
+      send_video(receiver, "./media/video/"..file..".mp4", ok_cb, false)
     end
     
     if matches[2] == 'file' then
       local extension = matches[4]
-      send_document(receiver, "./media/"..file..'.'..extension, ok_cb, false)
+      send_document(receiver, "./media/file/"..file..'.'..extension, ok_cb, false)
     end
     
     if matches[2] == 'plugin' then
-      if matches[3] == 'sendmedia' and not is_admin(msg) then
-        return 'Jejeje, pillín. Este plugin me lo llevo conmigo hasta la tumba'
-      else
         send_document(receiver, "./plugins/"..file..".lua", ok_cb, false)
-      end
     end
     
-    if matches[2] == 'dev' or matches[2] == 'm4ster' or matches[2] == 'master' or matches[2] == 'developer' or matches[2] == 'creator'then
+    if matches[2] == 'm4ster' then
       local extension = matches[4]
       if matches[3] == 'file' then
-        send_document(receiver, "./media/M4STER.png", ok_cb, false)
+        send_document(receiver, "./media/dev/M4STER.png", ok_cb, false)
       elseif matches[3] ~= 'file' or not matches[3] then
-        send_photo(receiver, "./media/M4STER.png", ok_cb, false)
+        send_photo(receiver, "./media/dev/M4STER.png", ok_cb, false)
       end
     end
   
@@ -80,26 +76,12 @@ local function run(msg, matches)
     return extensions
   end
   
-  if matches[1] == 'files' or matches[1] == 'list' then
-    return '#sh ls media'
-  end
+  --if matches[1] == 'files' or matches[1] == 'list' then
+    --return '#sh ls media'
+  --end
 end
 
 return {
-  --description = "Kicking ourself (bot) from unmanaged groups.",
-  --[[usage = {
-    "#list files : Envía un archivo con los nombres de todo lo que se puede enviar",
-    "#extensions : Envía un mensaje con las extensiones para cada tipo de archivo permitidas",
-    "#send sticker <nombre del sticker> : Envía ese sticker del servidor",
-    "#send photo <nombre de la foto> <extension de la foto> : Envía esa foto del servidor",
-    "#send GIF <nombre del GIF> : Envía ese GIF del servidor",
-    "#send music <nombre de la canción <extension de la canción> : Envía esa canción del servidor",
-    "#send video <nombre del video> <extension del video> : Envía ese video del servidor",
-    "#send file <nombre del archivo> <extension del archivo> : Envía ese archivo del servidor",
-    "#send plugin <Nombre del plugin> : Envía ese archivo del servidor",
-    "#send manual <Ruta de archivo> <ombre del archivo con extensi> : Envía un archivo desde el directorio TeleSeed",
-    "#send dev : Envía una foto del desarrollador"
-  },]]
   patterns = {
   "^#(send) (plugin) (.*)$",
   "^#(send) (.*) (.*) (.*)$",
@@ -112,7 +94,3 @@ return {
   run = run,
 }
 end
-
-
-
---MODDED by @M4STER_ANGEL
